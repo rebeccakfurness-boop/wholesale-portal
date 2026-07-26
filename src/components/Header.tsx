@@ -20,8 +20,7 @@ export function Header({
       <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-4">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2">
-            <span className="rx-stamp text-xs">Rx</span>
-            <span className="rx-label-heading text-lg text-mint-deep">
+            <span className="rx-label-heading -rotate-2 text-lg text-teal-dark">
               Sweet Disorder
             </span>
           </Link>
@@ -43,7 +42,7 @@ export function Header({
           <form action={logoutAction}>
             <button
               type="submit"
-              className="rounded-lg border border-cream-dark px-3 py-1.5 text-sm font-medium text-ink-soft transition hover:bg-cream-dark hover:text-ink"
+              className="border border-cream-dark px-3 py-1.5 text-sm font-medium text-ink-soft transition hover:bg-cream-dark hover:text-ink"
             >
               Sign out
             </button>

@@ -35,7 +35,7 @@ export function OrderCard({ order }: { order: Order }) {
         <div className="flex items-center gap-2">
           <Link
             href={`/orders/${order.id}`}
-            className="rounded-lg border border-cream-dark px-3 py-1.5 text-sm font-medium text-ink-soft transition hover:bg-cream-dark hover:text-ink"
+            className="border border-cream-dark px-3 py-1.5 text-sm font-medium text-ink-soft transition hover:bg-cream-dark hover:text-ink"
           >
             View
           </Link>
@@ -43,7 +43,7 @@ export function OrderCard({ order }: { order: Order }) {
             <input type="hidden" name="orderId" value={order.id} />
             <button
               type="submit"
-              className="rounded-lg bg-rx px-3 py-1.5 text-sm font-medium text-white transition hover:bg-rx-dark"
+              className="bg-teal px-3 py-1.5 text-sm font-medium text-white transition hover:bg-teal-dark"
             >
               Reorder
             </button>

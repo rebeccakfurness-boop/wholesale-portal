@@ -26,7 +26,7 @@ export function BranchSwitcher({
         name="branchId"
         defaultValue={currentBranchId}
         onChange={() => formRef.current?.requestSubmit()}
-        className="rounded-lg border border-cream-dark bg-white px-3 py-1.5 text-sm font-medium text-ink outline-none focus:border-mint-dark focus:ring-2 focus:ring-mint"
+        className="border border-cream-dark bg-white px-3 py-1.5 text-sm font-medium text-ink outline-none focus:border-teal focus:ring-2 focus:ring-teal/30"
       >
         {branches.map((branch) => (
           <option key={branch.id} value={branch.id}>

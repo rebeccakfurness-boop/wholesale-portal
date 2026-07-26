@@ -20,9 +20,9 @@ export function NavLinks() {
           <Link
             key={link.href}
             href={link.href}
-            className={`rounded-lg px-3 py-1.5 text-sm font-medium transition ${
+            className={`px-3 py-1.5 text-sm font-medium transition ${
               isActive
-                ? "bg-mint text-mint-deep"
+                ? "bg-teal/10 text-teal-dark"
                 : "text-ink-soft hover:bg-cream-dark hover:text-ink"
             }`}
           >

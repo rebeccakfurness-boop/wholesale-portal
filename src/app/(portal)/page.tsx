@@ -23,7 +23,7 @@ export default async function DashboardPage() {
     <div className="flex flex-col gap-8">
       <div>
         <p className="text-sm text-ink-soft">Welcome back,</p>
-        <h1 className="text-2xl font-semibold text-ink">{user.name}</h1>
+        <h1 className="font-heading text-2xl text-ink">{user.name}</h1>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-3">
@@ -60,8 +60,8 @@ export default async function DashboardPage() {
 
       <div>
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-ink">Recent orders</h2>
-          <Link href="/orders" className="text-sm font-medium text-mint-deep hover:underline">
+          <h2 className="font-heading text-lg text-ink">Recent orders</h2>
+          <Link href="/orders" className="text-sm font-medium text-teal-dark hover:underline">
             View full order history →
           </Link>
         </div>

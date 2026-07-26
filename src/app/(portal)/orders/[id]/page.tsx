@@ -21,7 +21,7 @@ export default async function OrderDetailPage({
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <Link href="/orders" className="text-sm font-medium text-mint-deep hover:underline">
+        <Link href="/orders" className="text-sm font-medium text-teal-dark hover:underline">
           ← Back to order history
         </Link>
       </div>
@@ -92,7 +92,7 @@ export default async function OrderDetailPage({
             <input type="hidden" name="orderId" value={order.id} />
             <button
               type="submit"
-              className="rounded-lg bg-rx px-5 py-2.5 font-medium text-white transition hover:bg-rx-dark"
+              className="bg-teal px-5 py-2.5 font-medium text-white transition hover:bg-teal-dark"
             >
               Reorder all items
             </button>

@@ -21,7 +21,7 @@ export function LoginForm() {
           required
           autoComplete="email"
           placeholder="you@yourstore.co.nz"
-          className="rounded-lg border border-cream-dark bg-white px-3.5 py-2.5 text-ink outline-none focus:border-mint-dark focus:ring-2 focus:ring-mint"
+          className="border border-cream-dark bg-white px-3.5 py-2.5 text-ink outline-none focus:border-teal focus:ring-2 focus:ring-teal/30"
         />
       </div>
       <div className="flex flex-col gap-1.5">
@@ -35,12 +35,12 @@ export function LoginForm() {
           required
           autoComplete="current-password"
           placeholder="••••••••"
-          className="rounded-lg border border-cream-dark bg-white px-3.5 py-2.5 text-ink outline-none focus:border-mint-dark focus:ring-2 focus:ring-mint"
+          className="border border-cream-dark bg-white px-3.5 py-2.5 text-ink outline-none focus:border-teal focus:ring-2 focus:ring-teal/30"
         />
       </div>
 
       {state?.error && (
-        <p className="rounded-lg bg-blush/60 px-3.5 py-2.5 text-sm text-rx-dark">
+        <p className="border border-status-processing/40 bg-status-processing/10 px-3.5 py-2.5 text-sm text-ink">
           {state.error}
         </p>
       )}
@@ -48,7 +48,7 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={pending}
-        className="mt-2 rounded-lg bg-rx px-4 py-2.5 font-medium text-white transition hover:bg-rx-dark disabled:opacity-60"
+        className="mt-2 bg-teal px-4 py-2.5 font-medium text-white transition hover:bg-teal-dark disabled:opacity-60"
       >
         {pending ? "Signing in…" : "Sign in"}
       </button>

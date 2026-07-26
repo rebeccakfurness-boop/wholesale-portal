@@ -21,10 +21,10 @@ export default async function CartPage({
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <Link href={`/orders/${order.id}`} className="text-sm font-medium text-mint-deep hover:underline">
+        <Link href={`/orders/${order.id}`} className="text-sm font-medium text-teal-dark hover:underline">
           ← Back to order
         </Link>
-        <h1 className="mt-2 text-2xl font-semibold text-ink">Reorder</h1>
+        <h1 className="font-heading mt-2 text-2xl text-ink">Reorder</h1>
       </div>
 
       <CartEditor initialItems={order.lineItems} sourceOrderNumber={order.orderNumber} />

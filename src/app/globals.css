@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --color-cream: #fbf6ec;
-  --color-cream-dark: #f2ead8;
-  --color-mint: #d8ede2;
-  --color-mint-dark: #9fcdb8;
-  --color-mint-deep: #4f8a6d;
-  --color-blush: #f6dcda;
-  --color-blush-dark: #e8a9a6;
-  --color-ink: #2e2a25;
-  --color-ink-soft: #66605a;
-  --color-rx: #c1443a;
-  --color-rx-dark: #9c332a;
+  --color-cream: #faf9f6;
+  --color-cream-dark: #ece8df;
+  --color-ink: #131313;
+  --color-ink-soft: #545454;
+  --color-teal: #42bab5;
+  --color-teal-dark: #359893;
+  --color-charcoal: #383838;
+
+  --color-status-fulfilled: #3ed660;
+  --color-status-processing: #ee9441;
+  --color-status-invoiced: #c8c8c8;
 
   --background: var(--color-cream);
   --foreground: var(--color-ink);
@@ -20,19 +20,18 @@
 @theme inline {
   --color-cream: var(--color-cream);
   --color-cream-dark: var(--color-cream-dark);
-  --color-mint: var(--color-mint);
-  --color-mint-dark: var(--color-mint-dark);
-  --color-mint-deep: var(--color-mint-deep);
-  --color-blush: var(--color-blush);
-  --color-blush-dark: var(--color-blush-dark);
   --color-ink: var(--color-ink);
   --color-ink-soft: var(--color-ink-soft);
-  --color-rx: var(--color-rx);
-  --color-rx-dark: var(--color-rx-dark);
+  --color-teal: var(--color-teal);
+  --color-teal-dark: var(--color-teal-dark);
+  --color-charcoal: var(--color-charcoal);
+  --color-status-fulfilled: var(--color-status-fulfilled);
+  --color-status-processing: var(--color-status-processing);
+  --color-status-invoiced: var(--color-status-invoiced);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-dm-sans);
+  --font-heading: var(--font-francois-one);
 }
 
 body {
@@ -40,13 +39,15 @@ body {
   color: var(--foreground);
 }
 
-/* Rx prescription-label motif used on order cards */
+/* Rx prescription-label motif used on order cards. Corners stay rounded
+   (matches the brand's card/image radius) while buttons and inputs stay
+   sharp-cornered, per the live site's button/input tokens. */
 .rx-card {
   position: relative;
-  background: #fffdf8;
+  background: #ffffff;
   border: 1px solid var(--color-cream-dark);
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 2px rgba(46, 42, 37, 0.06), 0 1px 0 rgba(46, 42, 37, 0.03);
+  border-radius: 0.8rem;
+  box-shadow: 0 1px 2px rgba(19, 19, 19, 0.06), 0 1px 0 rgba(19, 19, 19, 0.03);
 }
 
 .rx-card::before {
@@ -56,7 +57,7 @@ body {
   left: 1.5rem;
   right: 1.5rem;
   height: 0;
-  border-top: 2px dashed var(--color-mint-dark);
+  border-top: 2px dashed var(--color-teal);
 }
 
 .rx-stamp {
@@ -66,18 +67,14 @@ body {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 9999px;
-  background: var(--color-blush);
-  color: var(--color-rx-dark);
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 700;
-  font-style: italic;
-  font-size: 0.9rem;
-  border: 1px solid var(--color-blush-dark);
+  background: var(--color-teal);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
   flex-shrink: 0;
 }
 
 .rx-label-heading {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
-  letter-spacing: 0.02em;
+  font-family: var(--font-heading);
+  letter-spacing: 0.01em;
 }

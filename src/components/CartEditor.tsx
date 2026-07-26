@@ -33,7 +33,7 @@ export function CartEditor({
     return (
       <div className="rx-card px-6 py-10 text-center">
         <span className="rx-stamp mx-auto mb-4">Rx</span>
-        <h2 className="rx-label-heading text-xl text-ink">Sent to checkout</h2>
+        <h2 className="font-heading text-xl text-ink">Sent to checkout</h2>
         <p className="mx-auto mt-2 max-w-sm text-sm text-ink-soft">
           This is a placeholder — once the Shopify Admin API is connected,
           this step will create a real draft order and hand you off to
@@ -64,7 +64,7 @@ export function CartEditor({
               <p className="text-xs text-ink-soft">{li.sku} &middot; {formatCurrency(li.price)} each</p>
             </div>
             <div className="flex items-center gap-3">
-              <div className="flex items-center rounded-lg border border-cream-dark">
+              <div className="flex items-center border border-cream-dark">
                 <button
                   type="button"
                   aria-label={`Decrease quantity of ${li.title}`}
@@ -95,7 +95,7 @@ export function CartEditor({
               <button
                 type="button"
                 onClick={() => removeItem(li.productId)}
-                className="text-xs text-ink-soft underline hover:text-rx-dark"
+                className="text-xs text-ink-soft underline hover:text-status-processing"
               >
                 Remove
               </button>
@@ -113,7 +113,7 @@ export function CartEditor({
         type="button"
         disabled={items.length === 0}
         onClick={() => setHandedOff(true)}
-        className="self-end rounded-lg bg-rx px-5 py-2.5 font-medium text-white transition hover:bg-rx-dark disabled:opacity-50"
+        className="self-end bg-teal px-5 py-2.5 font-medium text-white transition hover:bg-teal-dark disabled:opacity-50"
       >
         Send to Shopify checkout
       </button>
