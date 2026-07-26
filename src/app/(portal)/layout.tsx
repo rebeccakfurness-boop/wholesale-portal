@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { Header } from "@/components/Header";
-import { getBranchesForCompany, getCompany } from "@/lib/mock/data";
+import { getBranchesForCompany, getCompanyById } from "@/lib/db/queries";
 import { getCurrentBranch, getCurrentUser } from "@/lib/session";
 
 export default async function PortalLayout({
@@ -11,8 +11,8 @@ export default async function PortalLayout({
   const user = await getCurrentUser();
   if (!user) redirect("/login");
 
-  const company = getCompany(user.companyId);
-  const branches = getBranchesForCompany(user.companyId);
+  const company = await getCompanyById(user.companyId);
+  const branches = await getBranchesForCompany(user.companyId);
   const currentBranch = await getCurrentBranch();
 
   if (!company || !currentBranch) redirect("/login");

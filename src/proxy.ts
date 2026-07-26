@@ -1,19 +1,33 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { SESSION_COOKIE } from "@/lib/constants";
+import { ADMIN_SESSION_COOKIE, SESSION_COOKIE } from "@/lib/constants";
+import { verifyAdminToken } from "@/lib/admin/token";
 
-const PUBLIC_PATHS = ["/login"];
-
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const isPublic = PUBLIC_PATHS.some((path) => pathname.startsWith(path));
+
+  if (pathname.startsWith("/admin")) {
+    const isAdminLogin = pathname.startsWith("/admin/login");
+    const adminSecret = process.env.ADMIN_PASSWORD;
+    const hasAdminSession =
+      Boolean(adminSecret) &&
+      (await verifyAdminToken(request.cookies.get(ADMIN_SESSION_COOKIE)?.value, adminSecret!));
+
+    if (!hasAdminSession && !isAdminLogin) {
+      return NextResponse.redirect(new URL("/admin/login", request.url));
+    }
+    if (hasAdminSession && isAdminLogin) {
+      return NextResponse.redirect(new URL("/admin", request.url));
+    }
+    return NextResponse.next();
+  }
+
+  const isPublic = pathname.startsWith("/login");
   const hasSession = Boolean(request.cookies.get(SESSION_COOKIE)?.value);
 
   if (!hasSession && !isPublic) {
-    const loginUrl = new URL("/login", request.url);
-    return NextResponse.redirect(loginUrl);
+    return NextResponse.redirect(new URL("/login", request.url));
   }
-
   if (hasSession && isPublic) {
     return NextResponse.redirect(new URL("/", request.url));
   }

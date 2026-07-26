@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { formatCurrency } from "@/lib/format";
-import type { LineItem } from "@/lib/mock/types";
+import type { LineItem } from "@/lib/orders";
 
 export function CartEditor({
   initialItems,

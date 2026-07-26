@@ -1,10 +1,15 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { findUserByCredentials, getBranch, getOrder } from "@/lib/mock/data";
+import { verifyPassword } from "@/lib/auth/password";
+import { getBranchById, getUserByEmail } from "@/lib/db/queries";
+import { getOrder } from "@/lib/orders";
 import { createSession, destroySession, getCurrentUser, setCurrentBranch } from "@/lib/session";
 
 export type LoginState = { error?: string };
+
+const GENERIC_LOGIN_ERROR =
+  "That email and password combination doesn't match a wholesale account.";
 
 export async function loginAction(
   _prevState: LoginState,
@@ -13,9 +18,9 @@ export async function loginAction(
   const email = String(formData.get("email") ?? "");
   const password = String(formData.get("password") ?? "");
 
-  const user = findUserByCredentials(email, password);
-  if (!user) {
-    return { error: "That email and password combination doesn't match a wholesale account." };
+  const user = await getUserByEmail(email);
+  if (!user || !(await verifyPassword(password, user.passwordHash))) {
+    return { error: GENERIC_LOGIN_ERROR };
   }
 
   await createSession(user.id);
@@ -32,7 +37,7 @@ export async function switchBranchAction(formData: FormData) {
   if (!user) redirect("/login");
 
   const branchId = String(formData.get("branchId") ?? "");
-  const branch = getBranch(branchId);
+  const branch = await getBranchById(branchId);
   if (!branch || branch.companyId !== user!.companyId) {
     return;
   }
@@ -44,7 +49,7 @@ export async function switchBranchAction(formData: FormData) {
 
 export async function reorderAction(formData: FormData) {
   const orderId = String(formData.get("orderId") ?? "");
-  const order = getOrder(orderId);
+  const order = await getOrder(orderId);
   if (!order) redirect("/orders");
   redirect(`/cart?from=${order!.id}`);
 }

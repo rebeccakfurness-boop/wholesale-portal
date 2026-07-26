@@ -1,13 +1,13 @@
 import { redirect } from "next/navigation";
 import { OrderCard } from "@/components/OrderCard";
-import { getOrdersForBranch } from "@/lib/mock/data";
+import { getOrdersForBranch } from "@/lib/orders";
 import { getCurrentBranch } from "@/lib/session";
 
 export default async function OrderHistoryPage() {
   const branch = await getCurrentBranch();
   if (!branch) redirect("/login");
 
-  const orders = getOrdersForBranch(branch.id);
+  const orders = await getOrdersForBranch(branch.id);
 
   return (
     <div className="flex flex-col gap-6">

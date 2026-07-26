@@ -3,7 +3,7 @@ import Link from "next/link";
 import { logoutAction } from "@/lib/actions";
 import { BranchSwitcher } from "@/components/BranchSwitcher";
 import { NavLinks } from "@/components/NavLinks";
-import type { Branch, Company, PortalUser } from "@/lib/mock/types";
+import type { Branch, Company, User } from "@/lib/db/schema";
 
 export function Header({
   company,
@@ -12,7 +12,7 @@ export function Header({
   currentBranch,
 }: {
   company: Company;
-  user: PortalUser;
+  user: User;
   branches: Branch[];
   currentBranch: Branch;
 }) {

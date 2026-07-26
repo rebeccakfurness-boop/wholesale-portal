@@ -2,8 +2,8 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { StatusBadge } from "@/components/StatusBadge";
 import { reorderAction } from "@/lib/actions";
-import { getOrder, orderTotal } from "@/lib/mock/data";
 import { formatCurrency, formatDate } from "@/lib/format";
+import { getOrder, orderTotal } from "@/lib/orders";
 import { getCurrentBranch } from "@/lib/session";
 
 export default async function OrderDetailPage({
@@ -15,7 +15,7 @@ export default async function OrderDetailPage({
   const branch = await getCurrentBranch();
   if (!branch) redirect("/login");
 
-  const order = getOrder(id);
+  const order = await getOrder(id);
   if (!order || order.branchId !== branch.id) notFound();
 
   return (

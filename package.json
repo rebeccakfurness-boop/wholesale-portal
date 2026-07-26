@@ -12,6 +12,8 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "csv-parse": "^7.0.1",
     "drizzle-orm": "^0.45.2",
     "next": "16.2.12",
     "postgres": "^3.4.9",

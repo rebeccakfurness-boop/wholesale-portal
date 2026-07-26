@@ -75,3 +75,7 @@ export const usersRelations = relations(users, ({ one }) => ({
     references: [companies.id],
   }),
 }));
+
+export type Company = typeof companies.$inferSelect;
+export type Branch = typeof branches.$inferSelect;
+export type User = typeof users.$inferSelect;

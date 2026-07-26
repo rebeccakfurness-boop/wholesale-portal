@@ -1,4 +1,4 @@
-import type { OrderStatus } from "@/lib/mock/types";
+import type { OrderStatus } from "@/lib/orders";
 
 const DOT_COLORS: Record<OrderStatus, string> = {
   fulfilled: "bg-status-fulfilled",

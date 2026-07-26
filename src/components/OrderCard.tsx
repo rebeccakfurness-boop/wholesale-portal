@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { StatusBadge } from "@/components/StatusBadge";
 import { reorderAction } from "@/lib/actions";
-import { orderTotal } from "@/lib/mock/data";
 import { formatCurrency, formatDate } from "@/lib/format";
-import type { Order } from "@/lib/mock/types";
+import { orderTotal } from "@/lib/orders";
+import type { Order } from "@/lib/orders";
 
 export function OrderCard({ order }: { order: Order }) {
   const itemCount = order.lineItems.reduce((sum, li) => sum + li.qty, 0);

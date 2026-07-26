@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { CartEditor } from "@/components/CartEditor";
-import { getOrder } from "@/lib/mock/data";
+import { getOrder } from "@/lib/orders";
 import { getCurrentBranch } from "@/lib/session";
 
 export default async function CartPage({
@@ -15,7 +15,7 @@ export default async function CartPage({
 
   if (!from) redirect("/orders");
 
-  const order = getOrder(from);
+  const order = await getOrder(from);
   if (!order || order.branchId !== branch.id) notFound();
 
   return (

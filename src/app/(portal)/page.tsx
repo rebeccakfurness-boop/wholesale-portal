@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { OrderCard } from "@/components/OrderCard";
-import { getOrdersForBranch, orderTotal } from "@/lib/mock/data";
 import { formatCurrency, formatDate } from "@/lib/format";
+import { getOrdersForBranch, orderTotal } from "@/lib/orders";
 import { getCurrentBranch, getCurrentUser } from "@/lib/session";
 
 export default async function DashboardPage() {
@@ -12,7 +12,7 @@ export default async function DashboardPage() {
   const branch = await getCurrentBranch();
   if (!branch) redirect("/login");
 
-  const orders = getOrdersForBranch(branch.id);
+  const orders = await getOrdersForBranch(branch.id);
   const recentOrders = orders.slice(0, 3);
   const lastOrder = orders[0];
   const yearToDateTotal = orders

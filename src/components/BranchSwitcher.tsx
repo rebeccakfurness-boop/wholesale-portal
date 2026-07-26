@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useRef } from "react";
 import { switchBranchAction } from "@/lib/actions";
-import type { Branch } from "@/lib/mock/types";
+import type { Branch } from "@/lib/db/schema";
 
 export function BranchSwitcher({
   branches,

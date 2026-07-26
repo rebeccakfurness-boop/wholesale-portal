@@ -1,11 +1,6 @@
 import { cookies } from "next/headers";
-import {
-  getBranch,
-  getBranchesForCompany,
-  getCompany,
-  getUser,
-} from "@/lib/mock/data";
-import type { Branch, Company, PortalUser } from "@/lib/mock/types";
+import { getBranchById, getBranchesForCompany, getCompanyById, getUserById } from "@/lib/db/queries";
+import type { Branch, Company, User } from "@/lib/db/schema";
 import { BRANCH_COOKIE, SESSION_COOKIE } from "@/lib/constants";
 
 const COOKIE_OPTIONS = {
@@ -16,17 +11,17 @@ const COOKIE_OPTIONS = {
   maxAge: 60 * 60 * 24 * 30,
 };
 
-export async function getCurrentUser(): Promise<PortalUser | null> {
+export async function getCurrentUser(): Promise<User | null> {
   const store = await cookies();
   const userId = store.get(SESSION_COOKIE)?.value;
   if (!userId) return null;
-  return getUser(userId) ?? null;
+  return (await getUserById(userId)) ?? null;
 }
 
 export async function getCurrentCompany(): Promise<Company | null> {
   const user = await getCurrentUser();
   if (!user) return null;
-  return getCompany(user.companyId) ?? null;
+  return (await getCompanyById(user.companyId)) ?? null;
 }
 
 /**
@@ -37,13 +32,13 @@ export async function getCurrentBranch(): Promise<Branch | null> {
   const user = await getCurrentUser();
   if (!user) return null;
 
-  const companyBranches = getBranchesForCompany(user.companyId);
+  const companyBranches = await getBranchesForCompany(user.companyId);
   if (companyBranches.length === 0) return null;
 
   const store = await cookies();
   const branchId = store.get(BRANCH_COOKIE)?.value;
   if (branchId) {
-    const branch = getBranch(branchId);
+    const branch = await getBranchById(branchId);
     if (branch && branch.companyId === user.companyId) {
       return branch;
     }
