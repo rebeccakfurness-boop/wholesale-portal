@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+:root {
+  --color-cream: #fbf6ec;
+  --color-cream-dark: #f2ead8;
+  --color-mint: #d8ede2;
+  --color-mint-dark: #9fcdb8;
+  --color-mint-deep: #4f8a6d;
+  --color-blush: #f6dcda;
+  --color-blush-dark: #e8a9a6;
+  --color-ink: #2e2a25;
+  --color-ink-soft: #66605a;
+  --color-rx: #c1443a;
+  --color-rx-dark: #9c332a;
+
+  --background: var(--color-cream);
+  --foreground: var(--color-ink);
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-cream-dark: var(--color-cream-dark);
+  --color-mint: var(--color-mint);
+  --color-mint-dark: var(--color-mint-dark);
+  --color-mint-deep: var(--color-mint-deep);
+  --color-blush: var(--color-blush);
+  --color-blush-dark: var(--color-blush-dark);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-rx: var(--color-rx);
+  --color-rx-dark: var(--color-rx-dark);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Rx prescription-label motif used on order cards */
+.rx-card {
+  position: relative;
+  background: #fffdf8;
+  border: 1px solid var(--color-cream-dark);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px rgba(46, 42, 37, 0.06), 0 1px 0 rgba(46, 42, 37, 0.03);
+}
+
+.rx-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 0;
+  border-top: 2px dashed var(--color-mint-dark);
+}
+
+.rx-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  background: var(--color-blush);
+  color: var(--color-rx-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 0.9rem;
+  border: 1px solid var(--color-blush-dark);
+  flex-shrink: 0;
+}
+
+.rx-label-heading {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
