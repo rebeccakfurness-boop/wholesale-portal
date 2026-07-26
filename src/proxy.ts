@@ -22,5 +22,9 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  // Skip static assets (anything in public/, e.g. /brand/*.png) in addition to
+  // Next internals — Next's image optimizer does an internal self-fetch for
+  // local images that doesn't carry the session cookie, so gating those paths
+  // made every optimized <Image> 404 through a login redirect.
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico)$).*)"],
 };

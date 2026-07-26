@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { logoutAction } from "@/lib/actions";
 import { BranchSwitcher } from "@/components/BranchSwitcher";
@@ -19,9 +20,17 @@ export function Header({
     <header className="border-b border-cream-dark bg-white/70 backdrop-blur">
       <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-4">
         <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="rx-label-heading -rotate-2 text-lg text-teal-dark">
-              Sweet Disorder
+          <Link href="/" className="flex items-center gap-2.5">
+            <Image
+              src="/brand/sweet-disorder-logo.png"
+              alt="Sweet Disorder"
+              width={36}
+              height={36}
+              className="h-[36px] w-[36px]"
+              priority
+            />
+            <span className="rx-label-heading hidden text-lg text-teal-dark sm:inline">
+              Wholesale
             </span>
           </Link>
           <NavLinks />

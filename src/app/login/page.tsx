@@ -1,13 +1,23 @@
+import Image from "next/image";
 import { LoginForm } from "@/components/LoginForm";
 
 export default function LoginPage() {
   return (
     <div className="flex min-h-screen">
       <div className="hidden flex-1 flex-col justify-between bg-teal p-12 lg:flex">
-        <div>
-          <p className="rx-label-heading -rotate-2 text-2xl text-white">Sweet Disorder</p>
-          <p className="mt-2 text-sm uppercase tracking-[0.2em] text-white/70">
-            Wholesale Portal
+        <div className="flex items-center gap-4">
+          <Image
+            src="/brand/sweet-disorder-logo.png"
+            alt="Sweet Disorder"
+            width={72}
+            height={72}
+            className="h-[72px] w-[72px]"
+            priority
+          />
+          <p className="text-sm uppercase tracking-[0.2em] text-white/70">
+            Wholesale
+            <br />
+            Portal
           </p>
         </div>
         <div className="max-w-sm">
@@ -26,8 +36,15 @@ export default function LoginPage() {
 
       <div className="flex flex-1 items-center justify-center bg-cream p-8">
         <div className="w-full max-w-sm">
-          <div className="mb-8 lg:hidden">
-            <p className="rx-label-heading -rotate-2 text-2xl text-teal-dark">Sweet Disorder</p>
+          <div className="mb-8 flex items-center gap-3 lg:hidden">
+            <Image
+              src="/brand/sweet-disorder-logo.png"
+              alt="Sweet Disorder"
+              width={56}
+              height={56}
+              className="h-[56px] w-[56px]"
+              priority
+            />
             <p className="text-sm uppercase tracking-[0.2em] text-ink-soft">
               Wholesale Portal
             </p>
